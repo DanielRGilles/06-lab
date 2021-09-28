@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
-const { data } = require('./data.js');
+const { ediblePlants } = require('./data.js');
 
 const app = express();
 const cors = require('cors');
@@ -9,16 +9,16 @@ const cors = require('cors');
 
 app.use(cors());
 
-app.get('/data', (req, res) => {
+app.get('/edible-plants', (req, res) => {
    
-    res.json(beanieBabies);
+    res.json(ediblePlants);
 });
 
 
-app.get('/data/:id', (req, res) => {
-    const matchingBeanieBaby = beanieBabies.find(baby => baby.id === Number(req.params.id));
+app.get('/edible-plants/:id', (req, res) => {
+    const matchingPlant = ediblePlants.find(plant => plant.id === Number(req.params.id));
 
-    res.json(matchingBeanieBaby);
+    res.json(matchingPlant);
 });
 
 module.exports = { app };
